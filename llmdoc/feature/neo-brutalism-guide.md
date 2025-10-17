@@ -32,9 +32,8 @@ Neo-Brutalism（新粗野主义）是一种强调功能性、高对比度和视�
 所有组件都使用实心黑色边框，厚度根据组件类型区分：
 
 ```css
---border-thick: 3px    /* 大型卡片、面板 */
---border-medium: 2px   /* 中型组件、输入框 */
---border-thin: 1px     /* 表格行分隔线 */
+--border-thick: 3px /* 大型卡片、面板 */ --border-medium: 2px
+  /* 中型组件、输入框 */ --border-thin: 1px /* 表格行分隔线 */;
 ```
 
 ### 2. 硬阴影系统
@@ -42,9 +41,9 @@ Neo-Brutalism（新粗野主义）是一种强调功能性、高对比度和视�
 使用无模糊的偏移阴影，创造"浮起"的视觉效果：
 
 ```css
---shadow-lg: 6px 6px 0 rgba(0, 0, 0, 0.15)   /* 大型面板 */
---shadow-md: 4px 4px 0 rgba(0, 0, 0, 0.15)   /* 中型卡片 */
---shadow-sm: 2px 2px 0 rgba(0, 0, 0, 0.15)   /* 小型元素 */
+--shadow-lg: 6px 6px 0 rgba(0, 0, 0, 0.15) /* 大型面板 */ --shadow-md: 4px 4px 0
+  rgba(0, 0, 0, 0.15) /* 中型卡片 */ --shadow-sm: 2px 2px 0 rgba(0, 0, 0, 0.15)
+  /* 小型元素 */;
 ```
 
 ### 3. 圆角系统
@@ -52,11 +51,9 @@ Neo-Brutalism（新粗野主义）是一种强调功能性、高对比度和视�
 大圆角营造现代感和友好性：
 
 ```css
---radius-xl: 20px   /* 大型卡片 */
---radius-lg: 16px   /* 中型卡片 */
---radius-md: 12px   /* 按钮 */
---radius-sm: 10px   /* 输入框 */
---radius-xs: 8px    /* 徽章 */
+--radius-xl: 20px /* 大型卡片 */ --radius-lg: 16px /* 中型卡片 */
+  --radius-md: 12px /* 按钮 */ --radius-sm: 10px /* 输入框 */ --radius-xs: 8px
+  /* 徽章 */;
 ```
 
 ### 4. 交互反馈
@@ -83,33 +80,31 @@ box-shadow: none;
 ### 背景颜色
 
 ```css
---bg-base: #f5f5f3         /* 页面背景 - 浅米色 */
---bg-panel: #fafaf8        /* 面板背景 - 奶油白 */
---bg-white: #ffffff        /* 纯白 - 用于输入框和表格 */
---bg-secondary: #f0f0ee    /* 次要背景 - 浅灰 */
+--bg-base: #f5f5f3 /* 页面背景 - 浅米色 */ --bg-panel: #fafaf8
+  /* 面板背景 - 奶油白 */ --bg-white: #ffffff /* 纯白 - 用于输入框和表格 */
+  --bg-secondary: #f0f0ee /* 次要背景 - 浅灰 */;
 ```
 
 ### 文本颜色
 
 ```css
---text-primary: #000000    /* 主要文字 - 纯黑 */
---text-secondary: #666666  /* 次要文字 - 深灰 */
+--text-primary: #000000 /* 主要文字 - 纯黑 */ --text-secondary: #666666
+  /* 次要文字 - 深灰 */;
 ```
 
 ### 强调色
 
 ```css
---color-yellow: #ffd966    /* 主要操作、警告 */
---color-pink: #ff7aa3      /* 危险操作、删除 */
---color-blue: #6ba4ff      /* 信息、进行中 */
---color-green: #5fe0a8     /* 成功、完成 */
+--color-yellow: #ffd966 /* 主要操作、警告 */ --color-pink: #ff7aa3
+  /* 危险操作、删除 */ --color-blue: #6ba4ff /* 信息、进行中 */
+  --color-green: #5fe0a8 /* 成功、完成 */;
 ```
 
 ### 边框颜色
 
 ```css
---border-primary: #000000  /* 主要边框 - 纯黑 */
---border-light: #e0e0e0    /* 轻量分隔线 - 浅灰 */
+--border-primary: #000000 /* 主要边框 - 纯黑 */ --border-light: #e0e0e0
+  /* 轻量分隔线 - 浅灰 */;
 ```
 
 ---
@@ -130,6 +125,7 @@ box-shadow: none;
 ```
 
 **特点：**
+
 - 3px 黑色边框
 - 20px 大圆角
 - 6px 硬阴影
@@ -147,6 +143,7 @@ box-shadow: none;
 ```
 
 **特点：**
+
 - 3px 黑色边框
 - 16px 圆角
 - 4px 硬阴影
@@ -163,6 +160,7 @@ box-shadow: none;
 ```
 
 **结构：**
+
 - 数值：28px 粗体黑色
 - 标签：14px 灰色
 
@@ -173,9 +171,7 @@ box-shadow: none;
 #### 基础按钮 (`.brutalist-button`)
 
 ```html
-<button class="brutalist-button">
-  Click Me
-</button>
+<button class="brutalist-button">Click Me</button>
 ```
 
 **默认颜色：** 黄色 (`#ffd966`)
@@ -184,22 +180,17 @@ box-shadow: none;
 
 ```html
 <!-- 粉色 - 危险操作 -->
-<button class="brutalist-button brutalist-button-pink">
-  Delete
-</button>
+<button class="brutalist-button brutalist-button-pink">Delete</button>
 
 <!-- 蓝色 - 信息操作 -->
-<button class="brutalist-button brutalist-button-blue">
-  View Info
-</button>
+<button class="brutalist-button brutalist-button-blue">View Info</button>
 
 <!-- 绿色 - 成功操作 -->
-<button class="brutalist-button brutalist-button-green">
-  Confirm
-</button>
+<button class="brutalist-button brutalist-button-green">Confirm</button>
 ```
 
 **按钮规范：**
+
 - Padding: `12px 28px`
 - 边框: 3px 黑色
 - 圆角: 12px
@@ -208,6 +199,7 @@ box-shadow: none;
 - 颜色: 黑色文字
 
 **按压效果：**
+
 ```css
 /* Hover */
 transform: translate(2px, 2px);
@@ -226,18 +218,13 @@ box-shadow: none;
 
 ```html
 <div>
-  <label class="brutalist-text block mb-2 font-semibold">
-    Username
-  </label>
-  <input
-    type="text"
-    class="brutalist-input"
-    placeholder="Enter your name"
-  />
+  <label class="brutalist-text block mb-2 font-semibold"> Username </label>
+  <input type="text" class="brutalist-input" placeholder="Enter your name" />
 </div>
 ```
 
 **特点：**
+
 - 纯白背景 (`#ffffff`)
 - 2px 黑色边框
 - 10px 圆角
@@ -252,9 +239,7 @@ box-shadow: none;
 #### 基础徽章 (`.brutalist-badge`)
 
 ```html
-<span class="brutalist-badge brutalist-badge-blue">
-  In Progress
-</span>
+<span class="brutalist-badge brutalist-badge-blue"> In Progress </span>
 ```
 
 **颜色变体：**
@@ -274,6 +259,7 @@ box-shadow: none;
 ```
 
 **规范：**
+
 - Padding: `6px 12px`
 - 圆角: 8px
 - 字重: 600
@@ -301,9 +287,7 @@ box-shadow: none;
         <td class="font-semibold">#1</td>
         <td>John Doe</td>
         <td>
-          <span class="brutalist-badge brutalist-badge-green">
-            Active
-          </span>
+          <span class="brutalist-badge brutalist-badge-green"> Active </span>
         </td>
       </tr>
     </tbody>
@@ -312,6 +296,7 @@ box-shadow: none;
 ```
 
 **表格规范：**
+
 - 表头背景: 浅灰 (`#f0f0ee`)
 - 表头边框: 2px 黑色底部分隔
 - 单元格 Padding: `16px`
@@ -325,10 +310,7 @@ box-shadow: none;
 #### Toggle 开关 (`.brutalist-toggle`)
 
 ```html
-<div
-  class="brutalist-toggle active"
-  onclick="this.classList.toggle('active')"
->
+<div class="brutalist-toggle active" onclick="this.classList.toggle('active')">
   <div class="brutalist-toggle-knob"></div>
 </div>
 ```
@@ -347,6 +329,7 @@ const [enabled, setEnabled] = useState(false)
 ```
 
 **规范：**
+
 - 尺寸: 60px × 32px
 - 边框: 3px 黑色
 - 圆角: 16px (pill shape)
@@ -372,12 +355,11 @@ const [enabled, setEnabled] = useState(false)
 <p class="brutalist-text">Normal text content.</p>
 
 <!-- 次要文字 -->
-<p class="brutalist-text brutalist-text-secondary">
-  Secondary text content.
-</p>
+<p class="brutalist-text brutalist-text-secondary">Secondary text content.</p>
 ```
 
 **字号规范：**
+
 - `.brutalist-title`: 32px, 粗体 (700)
 - `.brutalist-heading`: 20px, Semibold (600)
 - `.brutalist-text`: 14px, 正常 (400)
@@ -396,6 +378,7 @@ const [enabled, setEnabled] = useState(false)
 ```
 
 **规范：**
+
 - 最大宽度: 1400px
 - 居中对齐
 - Padding: `40px 20px`
@@ -439,9 +422,7 @@ const [enabled, setEnabled] = useState(false)
 
 ```html
 <!-- 不要这样做 -->
-<div class="brutalist-card" style="border: 1px solid blue;">
-  ...
-</div>
+<div class="brutalist-card" style="border: 1px solid blue;">...</div>
 ```
 
 ### 2. 颜色使用
@@ -466,13 +447,15 @@ const [enabled, setEnabled] = useState(false)
 
 ```html
 <!-- 卡片间距 -->
-<div class="space-y-6">  <!-- 6 × 0.25rem = 1.5rem -->
+<div class="space-y-6">
+  <!-- 6 × 0.25rem = 1.5rem -->
   <div class="brutalist-card p-8">...</div>
   <div class="brutalist-card p-8">...</div>
 </div>
 
 <!-- 表单间距 -->
-<div class="space-y-4">  <!-- 4 × 0.25rem = 1rem -->
+<div class="space-y-4">
+  <!-- 4 × 0.25rem = 1rem -->
   <div>...</div>
   <div>...</div>
 </div>
@@ -509,11 +492,7 @@ const [enabled, setEnabled] = useState(false)
 />
 
 <!-- 按钮禁用状态 -->
-<button
-  class="brutalist-button"
-  disabled={isLoading}
-  aria-busy={isLoading}
->
+<button class="brutalist-button" disabled="{isLoading}" aria-busy="{isLoading}">
   {isLoading ? 'Loading...' : 'Submit'}
 </button>
 ```
@@ -582,9 +561,7 @@ const [enabled, setEnabled] = useState(false)
     </div>
 
     <div class="flex gap-3">
-      <button type="submit" class="brutalist-button flex-1">
-        Submit
-      </button>
+      <button type="submit" class="brutalist-button flex-1">Submit</button>
       <button type="button" class="brutalist-button brutalist-button-pink">
         Cancel
       </button>
@@ -615,7 +592,9 @@ const [enabled, setEnabled] = useState(false)
         <td>Data 1</td>
         <td>Data 2</td>
         <td>
-          <button class="brutalist-button brutalist-button-blue text-sm py-2 px-4">
+          <button
+            class="brutalist-button brutalist-button-blue text-sm py-2 px-4"
+          >
             View
           </button>
         </td>
@@ -644,7 +623,7 @@ export const BrutalistButton = ({
   variant = 'default',
   children,
   onClick,
-  disabled
+  disabled,
 }: ButtonProps) => {
   const variantClass = {
     default: '',
@@ -671,7 +650,7 @@ export const BrutalistButton = ({
 // Toggle Component
 export const BrutalistToggle = ({
   enabled,
-  onChange
+  onChange,
 }: {
   enabled: boolean
   onChange: (value: boolean) => void
@@ -681,7 +660,7 @@ export const BrutalistToggle = ({
       className={`brutalist-toggle ${enabled ? 'active' : ''}`}
       onClick={() => onChange(!enabled)}
     >
-      <div className="brutalist-toggle-knob"></div>
+      <div className='brutalist-toggle-knob'></div>
     </div>
   )
 }
@@ -708,11 +687,13 @@ export const BrutalistToggle = ({
 ### 避免内联样式
 
 **✅ 推荐：**
+
 ```html
 <div class="brutalist-card p-8">...</div>
 ```
 
 **❌ 避免：**
+
 ```html
 <div style="background: #fafaf8; border: 3px solid black; ...">...</div>
 ```

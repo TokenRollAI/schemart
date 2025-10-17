@@ -9,6 +9,7 @@
 ### 设计理念
 
 Neo-Brutalism 是一种强调功能性、粗犷边框和硬阴影的设计风格，具有以下特征：
+
 - **粗边框**：使用 2-3px 的黑色边框
 - **硬阴影**：无模糊的偏移阴影效果
 - **大胆配色**：使用鲜艳的对比色
@@ -18,12 +19,14 @@ Neo-Brutalism 是一种强调功能性、粗犷边框和硬阴影的设计风格
 ### 技术架构
 
 **基础技术栈：**
+
 - **Tailwind CSS 4**：提供基础样式系统
 - **Radix UI Themes 3.2.1**：提供组件系统和主题变量
 - **自定义 CSS 变量**：定义设计令牌
 - **IBM Plex Sans**：主字体
 
 **样式层级：**
+
 1. **CSS 变量层**：定义设计令牌（颜色、边框、阴影等）
 2. **Tailwind 基础层**：提供工具类
 3. **Radix UI 覆盖层**：定制 Radix 组件样式
@@ -32,13 +35,13 @@ Neo-Brutalism 是一种强调功能性、粗犷边框和硬阴影的设计风格
 ### 使用指南
 
 **1. 布局容器**
+
 ```jsx
-<div className='brutalist-container'>
-  {/* 页面内容 */}
-</div>
+<div className='brutalist-container'>{/* 页面内容 */}</div>
 ```
 
 **2. 卡片组件**
+
 ```jsx
 // 大卡片
 <div className='brutalist-card p-8'>
@@ -52,6 +55,7 @@ Neo-Brutalism 是一种强调功能性、粗犷边框和硬阴影的设计风格
 ```
 
 **3. 按钮组件**
+
 ```jsx
 // 默认按钮
 <button className='brutalist-button'>按钮</button>
@@ -63,15 +67,13 @@ Neo-Brutalism 是一种强调功能性、粗犷边框和硬阴影的设计风格
 ```
 
 **4. 输入组件**
+
 ```jsx
-<input
-  type='text'
-  className='brutalist-input'
-  placeholder='输入内容'
-/>
+<input type='text' className='brutalist-input' placeholder='输入内容' />
 ```
 
 **5. 徽章组件**
+
 ```jsx
 <span className='brutalist-badge brutalist-badge-blue'>状态</span>
 <span className='brutalist-badge brutalist-badge-green'>成功</span>
@@ -80,6 +82,7 @@ Neo-Brutalism 是一种强调功能性、粗犷边框和硬阴影的设计风格
 ```
 
 **6. 表格组件**
+
 ```jsx
 <table className='brutalist-table'>
   <thead>
@@ -96,6 +99,7 @@ Neo-Brutalism 是一种强调功能性、粗犷边框和硬阴影的设计风格
 ```
 
 **7. 统计卡片**
+
 ```jsx
 <div className='brutalist-stat-card'>
   <div className='brutalist-stat-value'>数值</div>
@@ -104,6 +108,7 @@ Neo-Brutalism 是一种强调功能性、粗犷边框和硬阴影的设计风格
 ```
 
 **8. 开关组件**
+
 ```jsx
 <div className={`brutalist-toggle ${isActive ? 'active' : ''}`}>
   <div className='brutalist-toggle-knob'></div>
@@ -115,18 +120,15 @@ Neo-Brutalism 是一种强调功能性、粗犷边框和硬阴影的设计风格
 项目使用 Radix UI Themes 作为组件基础，通过 CSS 覆盖实现 Brutalist 风格：
 
 **主题配置（layout.tsx）：**
+
 ```jsx
-<Theme
-  accentColor='orange'
-  grayColor='sand'
-  radius='large'
-  appearance='light'
->
+<Theme accentColor='orange' grayColor='sand' radius='large' appearance='light'>
   {children}
 </Theme>
 ```
 
 **样式覆盖（globals.css）：**
+
 ```css
 .rt-Button {
   border: 3px solid var(--border-primary) !important;
@@ -152,6 +154,7 @@ Neo-Brutalism 是一种强调功能性、粗犷边框和硬阴影的设计风格
 ### 3.2 设计令牌定义
 
 **颜色系统：**
+
 - `--bg-base`: #f5f5f3 - 页面背景色
 - `--bg-panel`: #fafaf8 - 面板背景色
 - `--bg-white`: #ffffff - 纯白色
@@ -162,6 +165,7 @@ Neo-Brutalism 是一种强调功能性、粗犷边框和硬阴影的设计风格
 - `--border-primary`: #000000 - 主边框色
 
 **边框和阴影：**
+
 - `--border-thick`: 3px - 粗边框
 - `--border-medium`: 2px - 中等边框
 - `--border-thin`: 1px - 细边框
@@ -170,6 +174,7 @@ Neo-Brutalism 是一种强调功能性、粗犷边框和硬阴影的设计风格
 - `--shadow-sm`: 2px 2px 0 rgba(0, 0, 0, 0.15) - 小阴影
 
 **圆角：**
+
 - `--radius-xl`: 20px - 超大圆角
 - `--radius-lg`: 16px - 大圆角
 - `--radius-md`: 12px - 中等圆角

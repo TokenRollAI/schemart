@@ -13,17 +13,18 @@
 **变更时间**: 2025-01-18
 
 **问题描述**:
+
 - Zod 4.x 的 `.url()` 验证器不再接受空字符串
 - 用户在不使用某些 AI 提供商时，留空的 `*_BASE_URL` 环境变量导致应用启动失败
 
 **解决方案**:
+
 ```typescript
 // 修复前
 OPENAI_BASE_URL: z.string().url().optional()
 
 // 修复后
-OPENAI_BASE_URL: z
-  .string()
+OPENAI_BASE_URL: z.string()
   .url()
   .default('https://api.openai.com/v1')
   .optional()
@@ -32,6 +33,7 @@ OPENAI_BASE_URL: z
 ```
 
 **影响范围**:
+
 - `src/lib/env.ts` - 核心验证逻辑
 - 所有 AI 提供商的 BASE_URL 环境变量
 - `.env.example` 配置模板
@@ -45,6 +47,7 @@ OPENAI_BASE_URL: z
 **迁移内容**:
 
 **移除的组件库**:
+
 - `shadcn/ui` 组件系统
 - `MagicUI` 动画组件库
 - `lucide-react` 图标库
@@ -52,11 +55,13 @@ OPENAI_BASE_URL: z
 - `tailwindcss-animate` 动画工具
 
 **新增的组件库**:
+
 - `@radix-ui/themes` v3.2.1 - 完整的 UI 组件系统
 - `@radix-ui/react-icons` v1.3.2 - 官方图标库
 - Neo-Brutalism 设计系统 (自定义 CSS)
 
 **设计系统迁移**:
+
 ```diff
 - 语义化主题类 (bg-primary, text-secondary-foreground)
 - 渐变效果 (bg-gradient-primary, text-gradient-warm)
@@ -68,6 +73,7 @@ OPENAI_BASE_URL: z
 ```
 
 **文件变更**:
+
 - 删除: `src/components/ui/` (所有 shadcn/ui 组件)
 - 删除: `src/components/magicui/` (所有 MagicUI 组件)
 - 删除: `src/app/(pages)/magic/page.tsx` (动画演示页面)
@@ -77,6 +83,7 @@ OPENAI_BASE_URL: z
 #### 2.3 依赖版本升级
 
 **主要依赖升级**:
+
 ```json
 {
   "next": "15.5.2 → 15.5.6",
@@ -91,6 +98,7 @@ OPENAI_BASE_URL: z
 ```
 
 **开发工具升级**:
+
 ```json
 {
   "@biomejs/biome": "2.2.4 → 2.2.6",
@@ -105,12 +113,14 @@ OPENAI_BASE_URL: z
 **操作时间**: 2025-01-18
 
 **完成的工作**:
+
 - 复制 `.env.example` 到 `.env.local`
 - 运行 `pnpm db:push` 初始化数据库结构
 - 创建 `local.db` SQLite 数据库文件 (16KB)
 - 验证 `hello` 表结构创建成功
 
 **数据库配置**:
+
 ```typescript
 // 当前配置
 DB_FILE_NAME=file:local.db
@@ -126,6 +136,7 @@ CREATE TABLE hello (
 #### 2.5 CLAUDE.md 指南更新
 
 **更新内容**:
+
 - 移除 MagicUI 组件引用
 - 更新为 Neo-Brutalism 设计系统指南
 - 添加环境变量配置说明
@@ -133,6 +144,7 @@ CREATE TABLE hello (
 - 添加新设计令牌文档引用
 
 **设计指南变更**:
+
 ```diff
 - 使用 shadcn/ui 或 MagicUI 组件
 - 语义化颜色系统 (bg-primary, text-secondary)
@@ -148,22 +160,26 @@ CREATE TABLE hello (
 #### 2.6 性能影响
 
 **积极影响**:
+
 - 减少了 54 个依赖包的体积
 - 移除了复杂的动画系统，提升加载速度
 - Zod 4.x 性能优化，验证速度提升
 
 **潜在影响**:
+
 - 失去了 MagicUI 的复杂动画效果
 - 需要适应新的设计系统开发模式
 
 #### 2.7 开发体验变化
 
 **改进**:
+
 - 环境变量配置更灵活，支持空字符串
 - 组件系统更统一，基于 Radix UI Themes
 - 设计系统更简洁，减少 CSS 复杂度
 
 **学习成本**:
+
 - 团队需要熟悉 Neo-Brutalism 设计原则
 - 新的组件使用模式和命名约定
 - Brutalist CSS 类的使用方法

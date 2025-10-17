@@ -64,25 +64,27 @@ const envSchema = z.object({
 ### Zod 4.x URL 验证修复
 
 **问题描述**:
+
 - Zod 4.x 的 `.url()` 验证器不接受空字符串
 - 当用户不使用某个 AI 提供商时，留空的 BASE_URL 环境变量会导致验证失败
 
 **修复方案**:
+
 ```typescript
 // 修复前 (Zod 3.x 可用，4.x 失败)
 OPENAI_BASE_URL: z.string().url().optional()
 
 // 修复后 (兼容 Zod 4.x)
-OPENAI_BASE_URL: z
-  .string()
+OPENAI_BASE_URL: z.string()
   .url()
   .default('https://api.openai.com/v1')
   .optional()
-  .or(z.literal(''))                    // 允许空字符串
-  .transform((val) => (val === '' ? undefined : val))  // 转换为 undefined
+  .or(z.literal('')) // 允许空字符串
+  .transform((val) => (val === '' ? undefined : val)) // 转换为 undefined
 ```
 
 **修复原理**:
+
 1. `.or(z.literal(''))` - 允许空字符串作为有效值
 2. `.transform((val) => (val === '' ? undefined : val))` - 将空字符串转换为 undefined
 3. 系统随后会使用 `.default()` 中定义的默认值
@@ -90,6 +92,7 @@ OPENAI_BASE_URL: z
 ### 辅助验证函数
 
 **检查 AI 提供商配置**:
+
 ```typescript
 export const hasAnyAIProvider = () => {
   return !!(env.OPENAI_API_KEY || env.GOOGLE_API_KEY || env.ANTHROPIC_API_KEY)
@@ -97,6 +100,7 @@ export const hasAnyAIProvider = () => {
 ```
 
 **获取可用提供商列表**:
+
 ```typescript
 export const getAvailableProviders = () => {
   const providers: string[] = []
@@ -110,6 +114,7 @@ export const getAvailableProviders = () => {
 ### 环境变量文件结构
 
 **`.env.example` 模板**:
+
 ```bash
 # Local development database (SQLite via libSQL/Turso)
 DB_FILE_NAME=file:local.db

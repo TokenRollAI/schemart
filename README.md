@@ -1,95 +1,47 @@
-# fast-mvp
+# Schemart
 
-AI MVP应用的通用template
+🤖 AI驱动的数据库表结构管理工具
 
----
+一个基于 AI 技术的智能数据库表结构设计和管理工具,让表结构设计变得简单高效。
 
-## 前置准备
+## 核心特性
 
-在Claude code中
+### 🤖 AI 智能生成表结构
+- 使用自然语言描述需求,AI自动生成完整的表结构设计
+- 支持 OpenAI、Claude、Gemini 多种AI模型
+- 自动生成列定义、索引、注释等完整信息
+- 智能区分基本字段(id, created_at, updated_at)和业务字段
 
-```
-# Add TokenRoll plugin marketplace
-/plugin marketplace add https://github.com/TokenRollAI/cc-plugin
+### 📋 一键复制 CREATE SQL
+- 快速生成标准的 CREATE TABLE SQL 语句
+- 支持 MySQL、PostgreSQL、SQLite 多种数据库类型
+- 包含完整的列定义、索引、注释
+- 一键复制到剪贴板,直接使用
 
-# Install tr plugin
-/plugin install tr@cc-plugin
-```
+### 🗄️ 可视化表结构管理
+- 清晰的表结构展示,基本字段和业务字段区分显示
+- 完整的列信息:类型、注释、约束、默认值
+- 索引管理:支持普通索引和唯一索引
+- 表历史记录追踪
 
-重新启动claude code
-
-## 项目结构与开发规范
-
-本项目遵循 Next.js (App Router) 的标准开发规范，旨在提高代码的可读性、可维护性和团队协作效率。
-
-### 核心目录结构
-
-```
-/src
-├── app/ # 路由与页面
-│ ├── (server)/ # [后端] 服务端路由 (API, webhooks, etc.)
-│ │ └── api/
-│ │ └── [..path]/
-│ │ └── route.ts
-│ ├── (pages)/ # [前端] 页面组件
-│ │ ├── dashboard/
-│ │ │ └── page.tsx
-│ │ └── layout.tsx
-│ ├── globals.css # 全局样式
-│ └── layout.tsx # 根布局
-├── components/ # [前端] 全局共享组件
-│ ├── ui/ # 基础 UI 组件 (Button, Input, Card...)
-│ ├── features/ # 特定功能的业务组件 (UserProfile, ProductCard...)
-│ └── providers/ # Provider组件 (tRPC, Theme等)
-├── lib/ # 公共库与辅助函数
-│ ├── api/ # 封装的客户端请求模块
-│ ├── schema/ # [DTO] Zod schemas 定义模块
-│ │ └── hello.ts # Hello模块的输入验证schema
-│ └── trpc/ # tRPC客户端配置
-├── server/ # [后端] 服务端业务逻辑
-│ ├── trpc.ts # tRPC初始化配置
-│ └── routers/ # tRPC路由定义
-│     ├── _app.ts # 根路由
-│     └── hello.ts # Hello模块路由
-├── db/ # 数据库相关
-│ ├── db.ts # 数据库连接实例
-│ └── schema/ # 数据表定义
-│     └── hello.ts # Hello表结构
-├── types/ # 全局 TypeScript 类型定义
-└── index.d.ts # 全局类型声明文件
-```
-
-### 规范详解
-
-#### 1. 前端开发 (`/src/app/(pages)`)
-
-- **路由定义**: Next.js App Router 采用**基于文件夹的路由**。每个需要映射到 URL 路径的页面都应在 `/src/app/(pages)` 目录下创建一个对应的文件夹。
-- **页面组件**: 每个路由文件夹内的 `page.tsx` 文件是该路由的**主页面组件**。
-- **布局组件**: `layout.tsx` 文件用于定义该路由及其子路由共享的 UI 布局。
-
-#### 2. 后端开发 (`/src/app/(server)`)
-
-- **API 路由**: 所有后端 API 端点都定义在 `/src/app/(server)/api` 目录下。我们使用 Next.js 的 Route Handlers。
-- **文件命名**: 每个 API 端点对应一个 `route.ts` 文件。例如，`POST /api/users` 的处理逻辑应位于 `/src/app/(server)/api/users/route.ts` 中。
-
-#### 3. 客户端请求 (`/src/lib/api`)
-
-- **封装**: 所有从前端发起的 API 请求（例如使用 `fetch`）都应封装在 `/src/lib/api` 模块的函数里。
-- **好处**: 便于统一管理 API 端点、请求头、错误处理和加载状态。
--
-
-#### 4. 数据传输对象 (DTO / Schema) (`/src/lib/schema`)
-
-- **定义位置**: 所有用于前后端数据校验的 Zod Schema（可以视为 DTO）都应统一存放在 `/src/lib/schema` 模块中。
-- **用途**: 这些 Schema 用于验证 tRPC 的输入参数，确保数据在系统中的类型安全。
-- **命名规范**: 每个业务模块的 schema 应该独立成文件，如 `hello.ts`、`user.ts` 等。
-- **导出规范**: 使用对象形式组织相关的 schema，便于管理和使用。
-
-#### 5. 全局类型 (`/src/types`)
-
-- **定义**: 项目中通用的、非 Zod Schema 的 TypeScript 类型或接口，应定义在 `/src/types` 目录下。
+### 📤 项目导入导出
+- 支持项目完整导出为 JSON 格式
+- 一键导入已有项目
+- 方便团队协作和项目备份
+- 跨平台共享表结构设计
 
 ---
+
+## 技术栈
+
+- **前端框架**: Next.js 15.5 + React 19
+- **API层**: tRPC (端到端类型安全)
+- **数据库**: SQLite + Drizzle ORM
+- **UI组件**: Radix UI + Neo-Brutalism 设计系统
+- **AI集成**: Vercel AI SDK (支持 OpenAI、Claude、Gemini)
+- **样式**: Tailwind CSS
+- **验证**: Zod 4.x
+- **包管理**: pnpm
 
 ## 快速开始
 
@@ -99,34 +51,108 @@ AI MVP应用的通用template
 pnpm install
 ```
 
-### 2. 数据库初始化
+### 2. 配置环境变量
 
-本项目使用 SQLite 数据库和 Drizzle ORM。首次运行前需要初始化数据库：
+复制 `.env.example` 为 `.env` 并配置AI提供商的API密钥:
 
 ```bash
-# 推送数据库结构到本地数据库文件
-pnpm db:push
-
-# 可选：打开 Drizzle Studio 查看数据库
-pnpm db:studio
+cp .env.example .env
 ```
 
-**数据库相关命令说明：**
+编辑 `.env` 文件,至少配置一个AI提供商的API密钥:
 
-- `pnpm db:push` - 将 schema 推送到数据库（开发环境推荐）
-- `pnpm db:generate` - 生成迁移文件
-- `pnpm db:migrate` - 运行迁移文件（生产环境推荐）
-- `pnpm db:studio` - 启动 Drizzle Studio 数据库管理界面
+```env
+# OpenAI (推荐)
+OPENAI_API_KEY=your_openai_api_key_here
+OPENAI_BASE_URL=https://api.openai.com/v1
+OPENAI_MODEL=gpt-4o-mini
 
-### 3. 启动开发服务器
+# 或者使用 Claude
+ANTHROPIC_API_KEY=your_anthropic_api_key_here
+
+# 或者使用 Gemini
+GOOGLE_API_KEY=your_google_api_key_here
+```
+
+### 3. 初始化数据库
+
+```bash
+pnpm db:push
+```
+
+### 4. 启动开发服务器
 
 ```bash
 pnpm dev
 ```
 
-访问 [http://localhost:3002](http://localhost:3002) 查看应用。
+访问 [http://localhost:3000](http://localhost:3000) 开始使用。
 
-### 4. 项目构建
+## 使用指南
+
+### 创建项目
+
+1. 在首页点击"新建项目"按钮
+2. 输入项目名称和描述
+3. 点击创建
+
+### 使用AI生成表结构
+
+1. 进入项目详情页
+2. 点击"开始使用 AI 生成"按钮
+3. 选择AI提供商(OpenAI/Claude/Gemini)
+4. 用自然语言描述你的需求,例如:
+   ```
+   创建一个用户表,包含:
+   - 用户名(唯一)
+   - 邮箱(唯一)
+   - 密码(加密)
+   - 手机号
+   - 头像URL
+   - 用户状态(正常/禁用)
+   - 注册时间
+   - 最后登录时间
+
+   需要为邮箱和手机号添加索引
+   ```
+5. AI将自动生成完整的表结构设计
+6. 查看生成的表结构,确认无误后保存到项目
+
+### 复制CREATE SQL
+
+1. 在项目详情页的表卡片上,点击📋按钮
+2. SQL语句将自动复制到剪贴板
+3. 可以直接在数据库中执行
+
+### 导入导出项目
+
+**导出项目:**
+1. 进入项目详情页
+2. 点击"导出项目"按钮
+3. 可以复制JSON或下载文件
+
+**导入项目:**
+1. 在首页点击"导入项目"按钮
+2. 选择之前导出的JSON文件
+3. 项目将被导入系统
+
+## 数据库命令
+
+```bash
+# 推送schema到数据库(开发环境)
+pnpm db:push
+
+# 生成迁移文件
+pnpm db:generate
+
+# 运行迁移(生产环境)
+pnpm db:migrate
+
+# 打开数据库管理界面
+pnpm db:studio
+```
+
+## 项目构建
 
 ```bash
 # 构建生产版本
@@ -134,4 +160,10 @@ pnpm build
 
 # 启动生产服务器
 pnpm start
+
+# 代码格式化
+pnpm format
+
+# 代码检查
+pnpm lint
 ```

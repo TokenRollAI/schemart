@@ -1,98 +1,104 @@
-# Fast MVP 项目文档索引
+# Schemart 项目文档索引
 
-这是 Fast MVP 项目的核心文档系统，为开发者提供完整的技术实现指南和架构参考。
+Schemart 是一个基于 AI 的数据库表结构管理工具，采用 Next.js 15 + React 19 + tRPC + AI 技术栈构建的现代化全栈应用。
+
+## 📋 项目概述
+
+**核心功能：**
+- AI 智能生成数据库表结构（支持 OpenAI、Claude、Gemini）
+- 完整的表结构 CRUD 操作和版本控制
+- 多数据库 SQL 生成（MySQL、PostgreSQL、SQLite）
+- 项目导入导出和团队协作支持
+
+**技术栈：**
+- 前端：Next.js 15.5.6 + React 19.2.0 + TypeScript 5.9.3
+- 后端：tRPC 11.6.0 + Zod 4.1.12 + Drizzle ORM 0.44.6
+- AI 集成：Vercel AI SDK 5.0.76 + 多提供商支持
+- UI 框架：Radix UI Themes 3.2.1 + Tailwind CSS 4.1.14 + Neo-Brutalism 设计系统
 
 ## 🏗️ 架构文档
 
-### [整体架构设计](./feature/architecture-overview.md)
+### [项目整体架构](./feature/project-architecture.md)
 
-基于实际代码验证的项目整体架构设计，包含精确的技术栈版本(Next.js 15.5.2、React 19.1.0)、目录结构和开发工作流程指南
+基于 Next.js App Router 的全栈架构设计，包含技术栈版本说明、目录结构分析和模块组织方式
 
-### [App 路由系统](./feature/app-routing-system.md)
+### [数据库设计](./feature/database-design.md)
 
-基于实际代码验证的 Next.js App Router 路由组设计、页面组件实现模式和 API 端点组织
+完整的数据库表结构设计，包含项目、表、列、索引、历史记录等核心表的设计和关系
 
-### [服务端架构](./feature/server-architecture.md)
+### [AI 集成系统](./feature/ai-integration-system.md)
 
-tRPC 路由组织、数据验证机制和错误处理策略
+多 AI 提供商抽象层设计，支持 OpenAI、Claude、Gemini 的统一接口和配置管理
 
-### [AI 提供者系统](./feature/ai-provider-system.md)
+### [tRPC API 路由](./feature/trpc-api-routes.md)
 
-多 AI 提供商抽象层设计、工厂模式实现和配置管理，基于实际代码验证的完整技术文档
-
-### [组件架构](./feature/component-architecture.md)
-
-基于实际代码验证的 UI 组件库组织、Radix UI Themes 集成和 Provider 组件实现指南
+完整的 tRPC 路由系统设计，包含核心业务逻辑、数据验证和错误处理
 
 ### [Neo-Brutalism 设计系统](./feature/neo-brutalism-design-system.md)
 
-完整的设计系统架构文档，包含设计理念、CSS 类系统、设计令牌和使用规范
+完整的设计系统架构，包含设计理念、CSS 类系统、设计令牌和使用规范
 
-### [架构变更记录](./feature/architecture-changes-log.md)
+### [前端页面架构](./feature/frontend-page-architecture.md)
 
-项目重要架构变更历史记录，包含组件库迁移、设计系统演进和技术影响分析
+基于 Next.js App Router 的页面设计，包含路由结构、组件层级和交互流程
 
-### [最近架构变更](./feature/recent-architecture-changes.md)
+## 🔧 核心功能模块
 
-2025年1月重要架构变更记录，包含环境变量验证修复、组件库迁移到 Radix UI Themes、Neo-Brutalism 设计系统引入和依赖版本升级
+### [AI 表结构生成](./feature/ai-table-generation.md)
 
-### [Radix UI 使用指南](./feature/radix-ui-usage-guide.md)
+AI 生成表结构的核心实现，包含提示词工程、上下文感知和多轮对话功能
 
-完整的 Radix UI Themes 使用指南，包含组件示例、图标系统、主题定制和最佳实践
+### [表结构管理](./feature/table-structure-management.md)
 
-### [数据库与配置](./feature/database-configuration.md)
+完整的表结构 CRUD 操作，包含项目、表、列、索引的增删改查和级联操作
 
-数据库层设计、环境变量管理和项目配置系统
+### [版本控制系统](./feature/version-control-system.md)
 
-### [环境变量验证系统](./feature/environment-variables-validation.md)
+表结构变更历史记录和快照管理，支持完整的版本追踪和回滚
 
-详细的环境变量验证系统设计，包含 Zod 4.x URL 验证修复和类型安全保障
+### [SQL 生成引擎](./feature/sql-generation-engine.md)
 
-## 🔧 开发流程
+多数据库 SQL 生成功能，支持 MySQL、PostgreSQL、SQLite 的语法优化
 
-### [项目初始化流程](./sop/project-initialization.md)
+### [导入导出功能](./feature/import-export-features.md)
 
-基于实际配置的新项目环境搭建流程，包含Node.js 20+、pnpm 10+版本要求、数据库初始化和AI提供商配置步骤
+项目数据的导入导出功能，支持 JSON 格式的数据交换和版本迁移
 
-### [添加新功能流程](./sop/feature-development.md)
+## 📚 开发指南
 
-基于实际代码验证的标准化新功能开发流程，包含页面路由、tRPC路由、Schema验证和组件实现的完整指南
+### [项目初始化](./sop/project-initialization.md)
 
-### [AI 功能集成流程](./sop/ai-integration.md)
+新项目环境搭建流程，包含依赖安装、数据库配置和 AI 提供商设置
 
-基于实际代码验证的 AI 功能集成流程，包含提供商配置、路由实现和错误处理的完整指南
+### [开发工作流](./sop/development-workflow.md)
 
-### [主题系统使用规范](./sop/theme-system-usage.md)
+标准的开发流程和代码规范，包含功能开发、测试和部署的完整指南
 
-正确使用项目主题系统的开发规范和最佳实践
+### [AI 功能集成](./sop/ai-feature-integration.md)
 
-## 📋 标准操作程序 (SOP)
+AI 功能的开发和集成流程，包含新的 AI 提供商接入和功能扩展
 
-### [代码提交规范](./sop/code-commit-guidelines.md)
+### [数据库操作](./sop/database-operations.md)
 
-基于实际项目配置验证的 Git 提交规范，包含代码质量工具配置、提交风格和项目特定要求
+数据库迁移、schema 更新和数据操作的安全流程和最佳实践
 
-### [数据库操作流程](./sop/database-operations.md)
+## 🛠️ 技术参考
 
-数据库迁移、schema 更新和数据操作的安全流程
+### [环境变量配置](./feature/environment-configuration.md)
 
-### [部署和发布流程](./sop/deployment-process.md)
+完整的环境变量配置和验证系统，包含数据库连接和 AI 提供商配置
 
-生产环境部署、版本发布和监控配置的标准程序
+### [类型安全系统](./feature/type-safety-system.md)
 
-## 🎯 核心特性指南
+端到端的类型安全保障，包含 TypeScript、tRPC、Zod 的类型安全实现
 
-### [tRPC 类型安全开发](./feature/trpc-type-safety.md)
+### [错误处理机制](./feature/error-handling-mechanism.md)
 
-端到端类型安全开发、schema 定义和 API 设计模式
+统一的错误处理和用户反馈机制，包含前后端错误处理策略
 
-### [响应式设计实现](./feature/responsive-design.md)
+### [性能优化策略](./feature/performance-optimization.md)
 
-移动端适配、断点设计和响应式组件开发指南
-
-### [动画效果集成](./feature/animation-integration.md)
-
-Framer Motion、MagicUI 组件和自定义动画的实现方法
+应用性能优化策略，包含缓存机制、代码分割和数据库查询优化
 
 ---
 
@@ -100,16 +106,16 @@ Framer Motion、MagicUI 组件和自定义动画的实现方法
 
 ### 📖 如何使用这些文档
 
-1. **新开发者入门**: 从 [整体架构设计](./feature/architecture-overview.md) 开始，然后阅读相关的 SOP 文档
-2. **功能开发**: 参考 [添加新功能流程](./sop/feature-development.md) 和相应的特性文档
-3. **问题排查**: 根据问题类型查阅对应的技术文档或 SOP
-4. **代码规范**: 遵循 [代码提交规范](./sop/code-commit-guidelines.md) 和 [主题系统使用规范](./sop/theme-system-usage.md)
+1. **新开发者入门**: 从 [项目整体架构](./feature/project-architecture.md) 开始，了解系统设计
+2. **功能开发**: 参考 [开发工作流](./sop/development-workflow.md) 和对应的功能模块文档
+3. **问题排查**: 根据问题类型查阅对应的技术文档或操作指南
+4. **AI 集成**: 参考 [AI 功能集成](./sop/ai-feature-integration.md) 和 [AI 集成系统](./feature/ai-integration-system.md)
 
 ### 🎯 文档定位
 
-- **技术文档** (`/feature/`): 详细的架构设计和实现指南
+- **架构文档** (`/feature/`): 详细的系统设计和实现指南
 - **操作流程** (`/sop/`): 标准化的开发和工作流程
-- **开发者参考**: 专注于代码设计、架构实现和维护，不包含教程内容
+- **技术参考**: 具体的技术实现细节和最佳实践
 
 ### 🔄 文档更新
 

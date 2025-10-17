@@ -2,6 +2,14 @@ import 'dotenv/config'
 import { drizzle } from 'drizzle-orm/libsql'
 import type { LibSQLDatabase } from 'drizzle-orm/libsql'
 import { helloTable } from './schema/hello'
+import {
+  projectsTable,
+  tablesTable,
+  columnsTable,
+  indexesTable,
+  conversationHistoryTable,
+  tableHistoryTable,
+} from './schema/schemart'
 import { env } from '@/lib/env'
 
 /**
@@ -27,4 +35,12 @@ export const getDb = (): LibSQLDatabase => {
  */
 export const db = getDb()
 
-export { helloTable }
+export {
+  helloTable,
+  projectsTable,
+  tablesTable,
+  columnsTable,
+  indexesTable,
+  conversationHistoryTable,
+  tableHistoryTable,
+}

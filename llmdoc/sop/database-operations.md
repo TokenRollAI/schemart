@@ -30,6 +30,7 @@ pnpm db:push
 - 表结构频繁变更期
 
 **项目初始化示例**:
+
 ```bash
 # 1. 复制环境变量配置
 cp .env.example .env.local

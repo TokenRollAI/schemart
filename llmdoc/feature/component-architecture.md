@@ -131,9 +131,7 @@ src/components/
   <div className='brutalist-card p-8'>
     <h2 className='brutalist-heading'>子标题</h2>
     <p className='brutalist-text'>内容</p>
-    <button className='brutalist-button brutalist-button-blue'>
-      按钮
-    </button>
+    <button className='brutalist-button brutalist-button-blue'>按钮</button>
   </div>
 </div>
 ```

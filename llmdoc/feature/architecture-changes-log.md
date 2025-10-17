@@ -11,6 +11,7 @@
 #### 2024年10月 - 组件库简化重构
 
 **变更背景：**
+
 - 简化项目架构，减少维护复杂度
 - 统一设计语言，提高开发效率
 - 减少包体积和依赖复杂度
@@ -18,19 +19,21 @@
 **主要变更：**
 
 **1. 移除 shadcn/ui 组件库**
+
 ```json
 // 删除的依赖包
 {
-  "class-variance-authority": "^0.7.1",      // CVA 变体系统
-  "@radix-ui/react-label": "^2.1.7",          // Radix Label 组件
-  "@radix-ui/react-slot": "^1.2.3",           // Radix Slot 组件
-  "lucide-react": "^0.542.0",                  // 图标库
-  "tailwindcss-animate": "^1.0.7",            // 动画工具
-  "shadcn": "^3.0.0"                          // shadcn CLI
+  "class-variance-authority": "^0.7.1", // CVA 变体系统
+  "@radix-ui/react-label": "^2.1.7", // Radix Label 组件
+  "@radix-ui/react-slot": "^1.2.3", // Radix Slot 组件
+  "lucide-react": "^0.542.0", // 图标库
+  "tailwindcss-animate": "^1.0.7", // 动画工具
+  "shadcn": "^3.0.0" // shadcn CLI
 }
 ```
 
 **删除的组件文件：**
+
 - `src/components/ui/button.tsx` - 按钮组件（6种变体）
 - `src/components/ui/card.tsx` - 卡片组件系列
 - `src/components/ui/input.tsx` - 输入框组件
@@ -39,6 +42,7 @@
 - `src/components/ui/table.tsx` - 表格组件集
 
 **2. 移除 MagicUI 动画库**
+
 ```json
 // 删除的动画组件
 src/components/magicui/
@@ -49,26 +53,30 @@ src/components/magicui/
 ```
 
 **删除的页面：**
+
 - `src/app/(pages)/magic/page.tsx` - MagicUI 演示页面
 
 **3. 引入 Radix UI Themes**
+
 ```json
 // 新增的依赖包
 {
-  "@radix-ui/themes": "^3.2.1",           // 核心 UI 组件库
-  "@radix-ui/react-icons": "^1.3.2"       // 图标库
+  "@radix-ui/themes": "^3.2.1", // 核心 UI 组件库
+  "@radix-ui/react-icons": "^1.3.2" // 图标库
 }
 ```
 
 **4. 实现 Neo-Brutalism 设计系统**
 
 **样式系统重构：**
+
 - 新增完整的 CSS 变量系统
 - 实现 Brutalist CSS 类库
 - 覆盖 Radix UI 默认样式
 - 统一设计令牌（颜色、边框、阴影、圆角）
 
 **设计特点：**
+
 - 粗犷边框（2-3px 黑色边框）
 - 硬阴影（无模糊偏移阴影）
 - 大胆配色（粉、黄、蓝、绿对比色）
@@ -77,32 +85,38 @@ src/components/magicui/
 **5. 页面样式统一**
 
 **更新的页面：**
+
 - `src/app/(pages)/page.tsx` - 采用 Brutalist 样式的首页
 - `src/app/(pages)/openai/page.tsx` - AI 聊天页面样式更新
 - `src/app/(pages)/trpc/page.tsx` - tRPC 演示页面样式更新
 
 **布局更新：**
+
 - `src/app/(pages)/layout.tsx` - 集成 Radix UI Theme
 - `src/app/(pages)/globals.css` - 重构全局样式系统
 
 ### 技术影响分析
 
 **包体积优化：**
+
 - 删除约 15 个依赖包
 - 减少约 200KB+ 的 node_modules 大小
 - 简化依赖树，减少潜在冲突
 
 **开发体验提升：**
+
 - 统一的 CSS 类系统，减少样式编写时间
 - 设计令牌化，确保视觉一致性
 - 简化的组件结构，降低学习成本
 
 **维护成本降低：**
+
 - 减少自定义组件维护工作
 - 统一的设计系统，减少样式不一致问题
 - 更少的依赖包，降低安全风险
 
 **性能优化：**
+
 - 减少 CSS 体积和复杂度
 - 移除复杂的动画组件（粒子系统等）
 - 更快的样式解析和渲染
@@ -112,6 +126,7 @@ src/components/magicui/
 **从 shadcn/ui 迁移到 Radix UI Themes：**
 
 **1. Button 组件迁移**
+
 ```tsx
 // 旧方式 (shadcn/ui)
 import { Button } from '@/components/ui/button'
@@ -122,6 +137,7 @@ import { Button } from '@/components/ui/button'
 ```
 
 **2. Card 组件迁移**
+
 ```tsx
 // 旧方式 (shadcn/ui)
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
@@ -138,6 +154,7 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card'
 ```
 
 **3. Input 组件迁移**
+
 ```tsx
 // 旧方式 (shadcn/ui)
 import { Input } from '@/components/ui/input'
@@ -148,6 +165,7 @@ import { Input } from '@/components/ui/input'
 ```
 
 **样式系统迁移：**
+
 ```css
 /* 旧方式：使用 Tailwind 类 */
 <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow-lg">
