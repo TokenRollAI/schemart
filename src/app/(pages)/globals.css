@@ -1,0 +1,306 @@
+@import 'tailwindcss';
+@import '@radix-ui/themes/styles.css';
+
+/* ========================================
+   NEO-BRUTALISM DESIGN SYSTEM
+   ======================================== */
+
+:root,
+.light,
+.light-theme {
+  /* Color Palette */
+  --bg-base: #f5f5f3;
+  --bg-panel: #fafaf8;
+  --bg-white: #ffffff;
+  --bg-secondary: #f0f0ee;
+
+  --text-primary: #000000;
+  --text-secondary: #666666;
+
+  --color-pink: #ff7aa3;
+  --color-yellow: #ffd966;
+  --color-blue: #6ba4ff;
+  --color-green: #5fe0a8;
+
+  --border-primary: #000000;
+  --border-light: #e0e0e0;
+
+  /* Override Radix UI variables for consistency */
+  --gray-1: #f5f5f3;
+  --gray-2: #fafaf8;
+  --gray-3: #f0f0ee;
+  --gray-12: #000000;
+
+  --accent-9: #ffd966;
+  --accent-10: #ffdd4d;
+  --accent-11: #000000;
+
+  /* Border Widths */
+  --border-thick: 3px;
+  --border-medium: 2px;
+  --border-thin: 1px;
+
+  /* Corner Radius */
+  --radius-xl: 20px;
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --radius-sm: 10px;
+  --radius-xs: 8px;
+
+  /* Shadows (Hard, No Blur) */
+  --shadow-lg: 6px 6px 0 rgba(0, 0, 0, 0.15);
+  --shadow-md: 4px 4px 0 rgba(0, 0, 0, 0.15);
+  --shadow-sm: 2px 2px 0 rgba(0, 0, 0, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-ibm-plex), 'Inter', 'Segoe UI', 'Helvetica', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Override Radix UI Themes styles for Neo-Brutalism */
+.radix-themes {
+  --default-font-family: var(--font-ibm-plex), 'Inter', 'Segoe UI', sans-serif;
+}
+
+/* Ensure Radix buttons follow Brutalist style */
+.rt-Button {
+  border: 3px solid var(--border-primary) !important;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.15) !important;
+  font-weight: 600 !important;
+  border-radius: 12px !important;
+  transition: all 0.1s ease !important;
+}
+
+.rt-Button:hover {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15) !important;
+}
+
+.rt-Button:active {
+  transform: translate(4px, 4px) !important;
+  box-shadow: none !important;
+}
+
+/* Ensure Radix cards follow Brutalist style */
+.rt-Card {
+  border: 3px solid var(--border-primary) !important;
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.15) !important;
+  border-radius: 20px !important;
+}
+
+/* ========================================
+   BRUTALIST COMPONENT CLASSES
+   ======================================== */
+
+/* Panels & Cards */
+.brutalist-card {
+  background-color: var(--bg-panel);
+  border: var(--border-thick) solid var(--border-primary);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+.brutalist-card-sm {
+  background-color: var(--bg-panel);
+  border: var(--border-thick) solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+/* Buttons */
+.brutalist-button {
+  padding: 12px 28px;
+  border: var(--border-thick) solid var(--border-primary);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  font-weight: 600;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.1s ease;
+  background-color: var(--color-yellow);
+}
+
+.brutalist-button:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
+}
+
+.brutalist-button:active {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+
+.brutalist-button-pink {
+  background-color: var(--color-pink);
+}
+
+.brutalist-button-blue {
+  background-color: var(--color-blue);
+}
+
+.brutalist-button-green {
+  background-color: var(--color-green);
+}
+
+/* Input Fields */
+.brutalist-input {
+  background-color: var(--bg-white);
+  border: var(--border-medium) solid var(--border-primary);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  color: var(--text-primary);
+  font-size: 14px;
+  width: 100%;
+}
+
+.brutalist-input:focus {
+  outline: none;
+  border-color: var(--border-primary);
+}
+
+/* Badges */
+.brutalist-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: var(--radius-xs);
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--text-primary);
+}
+
+.brutalist-badge-blue {
+  background-color: var(--color-blue);
+}
+
+.brutalist-badge-green {
+  background-color: var(--color-green);
+}
+
+.brutalist-badge-yellow {
+  background-color: var(--color-yellow);
+}
+
+.brutalist-badge-queued {
+  background-color: var(--bg-white);
+  border: var(--border-medium) solid var(--border-primary);
+}
+
+/* Table */
+.brutalist-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.brutalist-table thead {
+  background-color: var(--bg-secondary);
+}
+
+.brutalist-table thead th {
+  padding: 16px;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: var(--border-medium) solid var(--border-primary);
+}
+
+.brutalist-table tbody td {
+  padding: 16px;
+  border-bottom: var(--border-thin) solid var(--border-light);
+}
+
+.brutalist-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Stat Card */
+.brutalist-stat-card {
+  background-color: var(--bg-panel);
+  border: var(--border-thick) solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 24px;
+  text-align: center;
+}
+
+.brutalist-stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.brutalist-stat-label {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+/* Toggle Switch */
+.brutalist-toggle {
+  width: 60px;
+  height: 32px;
+  background-color: #999999;
+  border: var(--border-thick) solid var(--border-primary);
+  border-radius: 16px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.brutalist-toggle.active {
+  background-color: var(--color-green);
+}
+
+.brutalist-toggle-knob {
+  width: 20px;
+  height: 20px;
+  background-color: var(--border-primary);
+  border-radius: 50%;
+  position: absolute;
+  top: 4px;
+  left: 6px;
+  transition: left 0.2s;
+}
+
+.brutalist-toggle.active .brutalist-toggle-knob {
+  left: 32px;
+}
+
+/* Typography */
+.brutalist-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+}
+
+.brutalist-heading {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.brutalist-text {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+.brutalist-text-secondary {
+  color: var(--text-secondary);
+}
+
+/* Container */
+.brutalist-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}

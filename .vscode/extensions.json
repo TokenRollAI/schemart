@@ -1,0 +1,34 @@
+{
+  "recommendations": [
+    // 代码格式化
+    "esbenp.prettier-vscode",
+
+    // 代码质量
+    "dbaeumer.vscode-eslint",
+
+    // Tailwind CSS 支持
+    "bradlc.vscode-tailwindcss",
+
+    // TypeScript 增强
+    "ms-vscode.vscode-typescript-next",
+
+    // React 开发
+    "dsznajder.es7-react-js-snippets",
+    "burkeholland.simple-react-snippets",
+
+    // 数据库工具 (如果使用 Prisma)
+    "prisma.prisma",
+
+    // Git 工具
+    "eamodio.gitlens",
+    "mhutchie.git-graph",
+
+    // 其他有用的扩展
+    "christian-kohler.path-intellisense",
+    "formulahendry.auto-rename-tag",
+    "naumovs.color-highlight",
+    "usernamehw.errorlens",
+    "yoavbls.pretty-ts-errors"
+  ],
+  "unwantedRecommendations": []
+}

@@ -1,0 +1,59 @@
+# 依赖
+node_modules
+.pnpm-store
+
+# 构建产物
+.next
+out
+dist
+build
+*.tsbuildinfo
+
+# 环境变量
+.env
+.env.*
+
+# 版本控制
+.git
+.gitignore
+
+# 包管理器
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# 数据库
+*.db
+*.sqlite
+migrations
+
+# 日志
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+.idea
+
+# 测试覆盖率
+coverage
+.nyc_output
+
+# 其他
+*.min.js
+*.min.css
+*.map
+public/sw.js
+public/workbox-*.js
