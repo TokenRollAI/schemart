@@ -96,9 +96,10 @@ export default function GenerateTablePage() {
         <div>
           <Link
             href={`/project/${projectId}`}
-            className='brutalist-text brutalist-text-secondary hover:text-black'
+            className='brutalist-back-link'
           >
-            ← 返回项目
+            <span>←</span>
+            <span>返回项目</span>
           </Link>
           <h1 className='brutalist-title mt-2'>🤖 AI 智能生成表结构</h1>
           {project?.name && (
@@ -108,14 +109,16 @@ export default function GenerateTablePage() {
       </div>
 
       {/* 加载遮罩层 */}
-      {generateTableMutation.isLoading && (
-        <div className='fixed inset-0 bg-white/90 flex items-center justify-center z-50'>
-          <div className='text-center'>
-            <div className='animate-spin w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full mx-auto mb-4'></div>
-            <p className='brutalist-text font-semibold'>AI 正在生成表结构...</p>
-            <p className='brutalist-text-secondary text-xs mt-2'>
-              请稍候，这可能需要几秒钟
-            </p>
+      {generateTableMutation.isPending && (
+        <div className='brutalist-loading-mask'>
+          <div className='brutalist-loading-panel'>
+            <div className='brutalist-loader'>
+              <span className='brutalist-loader-dot' />
+              <span className='brutalist-loader-dot' />
+              <span className='brutalist-loader-dot' />
+            </div>
+            <p className='brutalist-loading-title'>AI 正在生成表结构</p>
+            <p className='brutalist-loading-subtitle'>请稍候，这可能需要几秒钟</p>
           </div>
         </div>
       )}
@@ -125,8 +128,8 @@ export default function GenerateTablePage() {
         <div className='brutalist-card p-8'>
           <div className='space-y-6'>
             {tables && tables.length > 0 && (
-              <div className='brutalist-card-sm p-4 bg-blue-50 border-blue-200'>
-                <p className='brutalist-text text-sm'>
+              <div className='brutalist-notice-card p-4'>
+                <p className='brutalist-text brutalist-text-secondary text-sm'>
                   💡 <strong>提示：</strong>项目中的所有现有表（{tables.length} 个）将自动作为参考，帮助AI理解您的设计风格
                 </p>
               </div>
@@ -147,19 +150,23 @@ export default function GenerateTablePage() {
 
             <div className='flex justify-end gap-3'>
               <Link href={`/project/${projectId}`}>
-                <button className='brutalist-button' disabled={generateTableMutation.isLoading}>
+                <button className='brutalist-button' disabled={generateTableMutation.isPending}>
                   取消
                 </button>
               </Link>
               <button
-                className={`brutalist-button brutalist-button-blue ${generateTableMutation.isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                className={`brutalist-button brutalist-button-blue ${generateTableMutation.isPending ? 'opacity-50 cursor-not-allowed' : ''}`}
                 onClick={handleAIGenerate}
-                disabled={generateTableMutation.isLoading || !aiDescription.trim()}
+                disabled={generateTableMutation.isPending || !aiDescription.trim()}
               >
-                {generateTableMutation.isLoading ? (
-                  <span className='flex items-center gap-2'>
-                    <span className='animate-spin inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full'></span>
-                    生成中...
+                {generateTableMutation.isPending ? (
+                  <span className='flex items-center gap-3'>
+                    <span className='brutalist-loader sm'>
+                      <span className='brutalist-loader-dot' />
+                      <span className='brutalist-loader-dot' />
+                      <span className='brutalist-loader-dot' />
+                    </span>
+                    <span>生成中...</span>
                   </span>
                 ) : (
                   '✨ 生成表结构'
@@ -215,7 +222,7 @@ export default function GenerateTablePage() {
                         </thead>
                         <tbody>
                           {selectedTable.columns?.map((col: any, idx: number) => (
-                            <tr key={idx} className={col.isBasicField ? 'bg-gray-100' : ''}>
+                            <tr key={idx} className={col.isBasicField ? 'brutalist-basic-row' : undefined}>
                               <td className='font-mono'>{col.name}</td>
                               <td className='font-mono'>{col.type}</td>
                               <td>{col.comment}</td>
@@ -290,9 +297,20 @@ export default function GenerateTablePage() {
                     <button
                       className='brutalist-button brutalist-button-blue'
                       onClick={handleSaveGeneratedTable}
-                      disabled={createTableMutation.isLoading || selectedTableIndex === null}
+                      disabled={createTableMutation.isPending || selectedTableIndex === null}
                     >
-                      {createTableMutation.isLoading ? '保存中...' : '💾 保存到项目'}
+                      {createTableMutation.isPending ? (
+                        <span className='flex items-center gap-3'>
+                          <span className='brutalist-loader sm'>
+                            <span className='brutalist-loader-dot' />
+                            <span className='brutalist-loader-dot' />
+                            <span className='brutalist-loader-dot' />
+                          </span>
+                          <span>保存中...</span>
+                        </span>
+                      ) : (
+                        '💾 保存到项目'
+                      )}
                     </button>
                   </div>
                 </div>

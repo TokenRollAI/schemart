@@ -77,6 +77,10 @@ export default function ProjectDetailPage() {
   if (isLoading) {
     return (
       <div className='brutalist-container'>
+        <Link href='/' className='brutalist-back-link mb-6'>
+          <span>←</span>
+          <span>返回首页</span>
+        </Link>
         <div className='brutalist-card p-8'>
           <p className='brutalist-text'>加载中...</p>
         </div>
@@ -88,10 +92,16 @@ export default function ProjectDetailPage() {
     return (
       <div className='brutalist-container'>
         <div className='brutalist-card p-8'>
-          <h1 className='brutalist-title text-red-500'>项目不存在</h1>
-          <Link href='/' className='inline-block mt-4'>
-            <button className='brutalist-button'>返回首页</button>
-          </Link>
+          <h1 className='brutalist-title'>项目不存在</h1>
+          <p className='brutalist-text brutalist-text-secondary mt-2'>
+            请返回首页检查项目列表或创建新的项目。
+          </p>
+          <div className='mt-6'>
+            <Link href='/' className='brutalist-back-link'>
+              <span>←</span>
+              <span>返回首页</span>
+            </Link>
+          </div>
         </div>
       </div>
     )
@@ -102,8 +112,9 @@ export default function ProjectDetailPage() {
       {/* Header */}
       <div className='flex items-center justify-between mb-8'>
         <div>
-          <Link href='/' className='brutalist-text brutalist-text-secondary hover:text-black'>
-            ← 返回项目列表
+          <Link href='/' className='brutalist-back-link'>
+            <span>←</span>
+            <span>返回首页</span>
           </Link>
           <h1 className='brutalist-title mt-2'>{project.name}</h1>
           {project.description && (
@@ -119,7 +130,7 @@ export default function ProjectDetailPage() {
           <button
             className='brutalist-button brutalist-button-pink'
             onClick={handleExportProject}
-            disabled={exportProjectMutation.isLoading}
+            disabled={exportProjectMutation.isPending}
           >
             📤 导出项目
           </button>
@@ -167,7 +178,7 @@ export default function ProjectDetailPage() {
                   <button
                     className='brutalist-button brutalist-button-blue text-sm px-3'
                     onClick={() => handleCopySQL(table.id)}
-                    disabled={generateSQLMutation.isLoading}
+                    disabled={generateSQLMutation.isPending}
                     title='复制CREATE SQL'
                   >
                     📋
@@ -225,4 +236,3 @@ export default function ProjectDetailPage() {
     </div>
   )
 }
-

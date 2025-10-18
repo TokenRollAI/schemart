@@ -184,10 +184,7 @@ export default function HomePage() {
               {projects.map((project) => (
                 <tr key={project.id}>
                   <td className='font-semibold'>
-                    <Link
-                      href={`/project/${project.id}`}
-                      className='hover:text-blue-600 transition-colors'
-                    >
+                    <Link href={`/project/${project.id}`} className='brutalist-text underline-offset-4 hover:underline'>
                       {project.name}
                     </Link>
                   </td>
@@ -221,7 +218,7 @@ export default function HomePage() {
                         onClick={() =>
                           handleDeleteProject(project.id, project.name)
                         }
-                        disabled={deleteProjectMutation.isLoading}
+                        disabled={deleteProjectMutation.isPending}
                       >
                         删除
                       </button>
@@ -299,10 +296,21 @@ export default function HomePage() {
                 className='brutalist-button brutalist-button-blue'
                 onClick={handleCreateProject}
                 disabled={
-                  createProjectMutation.isLoading || !newProjectName.trim()
+                  createProjectMutation.isPending || !newProjectName.trim()
                 }
               >
-                {createProjectMutation.isLoading ? '创建中...' : '创建项目'}
+                {createProjectMutation.isPending ? (
+                  <span className='flex items-center gap-3'>
+                    <span className='brutalist-loader sm'>
+                      <span className='brutalist-loader-dot' />
+                      <span className='brutalist-loader-dot' />
+                      <span className='brutalist-loader-dot' />
+                    </span>
+                    <span>创建中...</span>
+                  </span>
+                ) : (
+                  '创建项目'
+                )}
               </button>
             </div>
           </Dialog.Content>

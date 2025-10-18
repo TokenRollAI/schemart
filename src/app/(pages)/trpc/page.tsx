@@ -5,10 +5,9 @@ export default function TrpcPage() {
   return (
     <div className='brutalist-container'>
       <div className='mb-8'>
-        <Link href='/'>
-          <button className='brutalist-button brutalist-button-blue mb-4'>
-            ← Back to Home
-          </button>
+        <Link href='/' className='brutalist-back-link mb-4'>
+          <span>←</span>
+          <span>返回首页</span>
         </Link>
         <h1 className='brutalist-title'>tRPC Demo</h1>
         <p className='brutalist-text brutalist-text-secondary max-w-3xl'>

@@ -2,12 +2,11 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { useParams, useRouter } from 'next/navigation'
+import { useParams } from 'next/navigation'
 import { trpc } from '@/lib/trpc/client'
 
 export default function TableDetailPage() {
   const params = useParams()
-  const router = useRouter()
   const tableId = Number(params.id)
 
   const selectedDbType = 'postgresql' as const
@@ -35,6 +34,10 @@ export default function TableDetailPage() {
   if (isLoading) {
     return (
       <div className='brutalist-container'>
+        <Link href='/' className='brutalist-back-link mb-6'>
+          <span>←</span>
+          <span>返回首页</span>
+        </Link>
         <div className='brutalist-card p-8'>
           <p className='brutalist-text'>Loading...</p>
         </div>
@@ -46,10 +49,16 @@ export default function TableDetailPage() {
     return (
       <div className='brutalist-container'>
         <div className='brutalist-card p-8'>
-          <h1 className='brutalist-title text-red-500'>Table not found</h1>
-          <button className='brutalist-button mt-4' onClick={() => router.back()}>
-            Back
-          </button>
+          <h1 className='brutalist-title'>未找到表</h1>
+          <p className='brutalist-text brutalist-text-secondary mt-2'>
+            该表可能已经被删除，请返回首页重新选择项目。
+          </p>
+          <div className='mt-6'>
+            <Link href='/' className='brutalist-back-link'>
+              <span>←</span>
+              <span>返回首页</span>
+            </Link>
+          </div>
         </div>
       </div>
     )
@@ -62,12 +71,10 @@ export default function TableDetailPage() {
     <div className='brutalist-container'>
       <div className='flex items-center justify-between mb-6'>
         <div>
-          <button
-            className='brutalist-text brutalist-text-secondary hover:text-black mb-2'
-            onClick={() => router.back()}
-          >
-            ← 返回
-          </button>
+          <Link href='/' className='brutalist-back-link mb-2'>
+            <span>←</span>
+            <span>返回首页</span>
+          </Link>
           <h1 className='brutalist-title'>{table.name}</h1>
           {table.comment && (
             <p className='brutalist-text brutalist-text-secondary'>{table.comment}</p>
@@ -87,9 +94,9 @@ export default function TableDetailPage() {
           <button
             className='brutalist-button brutalist-button-green'
             onClick={handleCopySQL}
-            disabled={generateSQLMutation.isLoading}
+            disabled={generateSQLMutation.isPending}
           >
-            {generateSQLMutation.isLoading ? 'Generating...' : 'Copy SQL'}
+            {generateSQLMutation.isPending ? 'Generating...' : 'Copy SQL'}
           </button>
         </div>
       </div>
@@ -165,7 +172,7 @@ export default function TableDetailPage() {
       )}
 
       {basicFields.length > 0 && (
-        <div className='brutalist-card p-6 mb-6' style={{ backgroundColor: '#f9f9f9' }}>
+        <div className='brutalist-card p-6 mb-6 brutalist-basic-section'>
           <h2 className='brutalist-heading mb-4'>Basic Fields</h2>
           <div className='overflow-x-auto'>
             <table className='brutalist-table'>
@@ -180,7 +187,7 @@ export default function TableDetailPage() {
               </thead>
               <tbody>
                 {basicFields.map((col) => (
-                  <tr key={col.id} style={{ backgroundColor: '#f0f0f0' }}>
+                  <tr key={col.id} className='brutalist-basic-row'>
                     <td className='font-mono font-semibold'>{col.name}</td>
                     <td className='font-mono'>{col.type}</td>
                     <td>{col.comment}</td>

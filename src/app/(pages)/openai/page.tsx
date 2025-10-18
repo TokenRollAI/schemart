@@ -12,10 +12,9 @@ export default function OpenAIPage() {
   return (
     <div className='brutalist-container'>
       <div className='mb-8'>
-        <Link href='/'>
-          <button className='brutalist-button brutalist-button-blue mb-4'>
-            ← Back to Home
-          </button>
+        <Link href='/' className='brutalist-back-link mb-4'>
+          <span>←</span>
+          <span>返回首页</span>
         </Link>
         <h1 className='brutalist-title'>AI Chat Demo</h1>
         <p className='brutalist-text brutalist-text-secondary max-w-3xl mb-6'>
@@ -25,7 +24,7 @@ export default function OpenAIPage() {
         </p>
 
         {/* Info Card */}
-        <div className='brutalist-card-sm p-6 bg-blue-50'>
+        <div className='brutalist-notice-card p-6'>
           <h3 className='brutalist-text font-semibold mb-2'>Quick Start</h3>
           <p className='brutalist-text brutalist-text-secondary text-sm'>
             Set{' '}

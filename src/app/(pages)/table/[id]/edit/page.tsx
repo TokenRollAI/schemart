@@ -93,6 +93,10 @@ export default function EditTablePage() {
   if (isLoading) {
     return (
       <div className='brutalist-container'>
+        <Link href='/' className='brutalist-back-link mb-6'>
+          <span>←</span>
+          <span>返回首页</span>
+        </Link>
         <div className='brutalist-card p-8'>
           <p className='brutalist-text'>加载中...</p>
         </div>
@@ -104,10 +108,16 @@ export default function EditTablePage() {
     return (
       <div className='brutalist-container'>
         <div className='brutalist-card p-8'>
-          <h1 className='brutalist-title text-red-500'>表不存在</h1>
-          <button className='brutalist-button mt-4' onClick={() => router.back()}>
-            返回
-          </button>
+          <h1 className='brutalist-title'>表不存在</h1>
+          <p className='brutalist-text brutalist-text-secondary mt-2'>
+            该表可能已删除，请返回首页或选择其他表。
+          </p>
+          <div className='mt-6'>
+            <Link href='/' className='brutalist-back-link'>
+              <span>←</span>
+              <span>返回首页</span>
+            </Link>
+          </div>
         </div>
       </div>
     )
@@ -120,9 +130,10 @@ export default function EditTablePage() {
         <div>
           <Link
             href={`/table/${tableId}`}
-            className='brutalist-text brutalist-text-secondary hover:text-black'
+            className='brutalist-back-link'
           >
-            ← 返回表详情
+            <span>←</span>
+            <span>返回表详情</span>
           </Link>
           <h1 className='brutalist-title mt-2'>✏️ 编辑表结构</h1>
         </div>
@@ -133,9 +144,20 @@ export default function EditTablePage() {
           <button
             className='brutalist-button brutalist-button-blue'
             onClick={handleSave}
-            disabled={updateTableMutation.isLoading}
+            disabled={updateTableMutation.isPending}
           >
-            {updateTableMutation.isLoading ? '保存中...' : '💾 保存修改'}
+            {updateTableMutation.isPending ? (
+              <span className='flex items-center gap-3'>
+                <span className='brutalist-loader sm'>
+                  <span className='brutalist-loader-dot' />
+                  <span className='brutalist-loader-dot' />
+                  <span className='brutalist-loader-dot' />
+                </span>
+                <span>保存中...</span>
+              </span>
+            ) : (
+              '💾 保存修改'
+            )}
           </button>
         </div>
       </div>
