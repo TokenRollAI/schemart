@@ -10,7 +10,7 @@ const columnSchema = z.object({
   isPrimaryKey: z.boolean().default(false),
   isAutoIncrement: z.boolean().default(false),
   isUnique: z.boolean().default(false),
-  defaultValue: z.string().optional(),
+  defaultValue: z.string().nullish(),
   isBasicField: z.boolean().default(false),
   orderIndex: z.number().default(0),
 })
