@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { trpc } from '@/lib/trpc/client'
 import * as Dialog from '@radix-ui/react-dialog'
+import { BackLinks } from '@/components/navigation/BackLinks'
 
 export default function ProjectDetailPage() {
   const params = useParams()
@@ -77,10 +78,7 @@ export default function ProjectDetailPage() {
   if (isLoading) {
     return (
       <div className='brutalist-container'>
-        <Link href='/' className='brutalist-back-link mb-6'>
-          <span>←</span>
-          <span>返回首页</span>
-        </Link>
+        <BackLinks className='mb-6' />
         <div className='brutalist-card p-8'>
           <p className='brutalist-text'>加载中...</p>
         </div>
@@ -97,10 +95,7 @@ export default function ProjectDetailPage() {
             请返回首页检查项目列表或创建新的项目。
           </p>
           <div className='mt-6'>
-            <Link href='/' className='brutalist-back-link'>
-              <span>←</span>
-              <span>返回首页</span>
-            </Link>
+            <BackLinks />
           </div>
         </div>
       </div>
@@ -112,10 +107,7 @@ export default function ProjectDetailPage() {
       {/* Header */}
       <div className='flex items-center justify-between mb-8'>
         <div>
-          <Link href='/' className='brutalist-back-link'>
-            <span>←</span>
-            <span>返回首页</span>
-          </Link>
+          <BackLinks />
           <h1 className='brutalist-title mt-2'>{project.name}</h1>
           {project.description && (
             <p className='brutalist-text brutalist-text-secondary'>{project.description}</p>

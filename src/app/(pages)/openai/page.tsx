@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import { OpenAIChatDemo } from '@/components/chat/OpenAIChatDemo'
+import { BackLinks } from '@/components/navigation/BackLinks'
 
 export const metadata: Metadata = {
   title: 'OpenAI Demo | Fast MVP',
@@ -12,10 +12,7 @@ export default function OpenAIPage() {
   return (
     <div className='brutalist-container'>
       <div className='mb-8'>
-        <Link href='/' className='brutalist-back-link mb-4'>
-          <span>←</span>
-          <span>返回首页</span>
-        </Link>
+        <BackLinks className='mb-4' />
         <h1 className='brutalist-title'>AI Chat Demo</h1>
         <p className='brutalist-text brutalist-text-secondary max-w-3xl mb-6'>
           Experience OpenAI chat capabilities in Fast MVP. This demo uses Vercel

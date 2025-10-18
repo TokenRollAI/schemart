@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { trpc } from '@/lib/trpc/client'
+import { BackLinks } from '@/components/navigation/BackLinks'
 
 export default function TableDetailPage() {
   const params = useParams()
@@ -34,10 +35,7 @@ export default function TableDetailPage() {
   if (isLoading) {
     return (
       <div className='brutalist-container'>
-        <Link href='/' className='brutalist-back-link mb-6'>
-          <span>←</span>
-          <span>返回首页</span>
-        </Link>
+        <BackLinks className='mb-6' />
         <div className='brutalist-card p-8'>
           <p className='brutalist-text'>Loading...</p>
         </div>
@@ -54,10 +52,7 @@ export default function TableDetailPage() {
             该表可能已经被删除，请返回首页重新选择项目。
           </p>
           <div className='mt-6'>
-            <Link href='/' className='brutalist-back-link'>
-              <span>←</span>
-              <span>返回首页</span>
-            </Link>
+            <BackLinks />
           </div>
         </div>
       </div>
@@ -71,10 +66,7 @@ export default function TableDetailPage() {
     <div className='brutalist-container'>
       <div className='flex items-center justify-between mb-6'>
         <div>
-          <Link href='/' className='brutalist-back-link mb-2'>
-            <span>←</span>
-            <span>返回首页</span>
-          </Link>
+          <BackLinks className='mb-2' />
           <h1 className='brutalist-title'>{table.name}</h1>
           {table.comment && (
             <p className='brutalist-text brutalist-text-secondary'>{table.comment}</p>

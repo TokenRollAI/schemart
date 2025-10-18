@@ -32,6 +32,14 @@
 
 ---
 
+## 效果展示
+
+![首页](assets/首页.png)
+![项目列表](assets/列表页.png)
+![AI 生成表结构](assets/AI生成表结构.png)
+![表结构详情](assets/表结构详情.png)
+![表结构编辑](assets/表结构编辑.png)
+
 ## 技术栈
 
 - **前端框架**: Next.js 15.5 + React 19

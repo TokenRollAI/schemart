@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useParams, useRouter } from 'next/navigation'
 import { trpc } from '@/lib/trpc/client'
+import { BackLinks } from '@/components/navigation/BackLinks'
 
 export default function GenerateTablePage() {
   const params = useParams()
@@ -94,13 +95,7 @@ export default function GenerateTablePage() {
       {/* 头部 */}
       <div className='flex items-center justify-between mb-8'>
         <div>
-          <Link
-            href={`/project/${projectId}`}
-            className='brutalist-back-link'
-          >
-            <span>←</span>
-            <span>返回项目</span>
-          </Link>
+          <BackLinks previousHref={`/project/${projectId}`} />
           <h1 className='brutalist-title mt-2'>🤖 AI 智能生成表结构</h1>
           {project?.name && (
             <p className='brutalist-text brutalist-text-secondary'>项目: {project.name}</p>

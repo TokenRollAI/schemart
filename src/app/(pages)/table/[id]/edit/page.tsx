@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useParams, useRouter } from 'next/navigation'
 import { trpc } from '@/lib/trpc/client'
+import { BackLinks } from '@/components/navigation/BackLinks'
 
 export default function EditTablePage() {
   const params = useParams()
@@ -93,10 +94,7 @@ export default function EditTablePage() {
   if (isLoading) {
     return (
       <div className='brutalist-container'>
-        <Link href='/' className='brutalist-back-link mb-6'>
-          <span>←</span>
-          <span>返回首页</span>
-        </Link>
+        <BackLinks className='mb-6' />
         <div className='brutalist-card p-8'>
           <p className='brutalist-text'>加载中...</p>
         </div>
@@ -113,10 +111,7 @@ export default function EditTablePage() {
             该表可能已删除，请返回首页或选择其他表。
           </p>
           <div className='mt-6'>
-            <Link href='/' className='brutalist-back-link'>
-              <span>←</span>
-              <span>返回首页</span>
-            </Link>
+            <BackLinks />
           </div>
         </div>
       </div>
@@ -128,13 +123,7 @@ export default function EditTablePage() {
       {/* 头部 */}
       <div className='flex items-center justify-between mb-8'>
         <div>
-          <Link
-            href={`/table/${tableId}`}
-            className='brutalist-back-link'
-          >
-            <span>←</span>
-            <span>返回表详情</span>
-          </Link>
+          <BackLinks previousHref={`/table/${tableId}`} />
           <h1 className='brutalist-title mt-2'>✏️ 编辑表结构</h1>
         </div>
         <div className='flex gap-3'>
